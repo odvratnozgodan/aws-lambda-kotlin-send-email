@@ -44,7 +44,6 @@ tasks.register("generateConstants") {
     }
 }
 
-sourceSets["main"].kotlin.srcDir("${layout.buildDirectory}/generated/src")
 
 tasks.prepareKotlinBuildScriptModel{
     dependsOn("generateConstants")
@@ -53,6 +52,15 @@ tasks.prepareKotlinBuildScriptModel{
 tasks.test {
     useJUnitPlatform()
 }
+
+tasks.getByName("compileKotlin").dependsOn("generateConstants")
+
+sourceSets {
+    main {
+        kotlin.srcDir("${layout.buildDirectory.get()}/generated/src")
+    }
+}
+
 kotlin {
     jvmToolchain(17)
 }

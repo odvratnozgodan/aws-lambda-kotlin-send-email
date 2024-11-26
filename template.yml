@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Description: AWS Lambda function for sending emails written in Kotlin
 Resources:
-  function:
+  SendEmailFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: build/libs/aws-lambda-kotlin-send-email-1.0-SNAPSHOT-all.jar
